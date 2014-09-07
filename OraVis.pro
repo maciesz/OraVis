@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -12,7 +12,11 @@ TARGET = OraVis
 TEMPLATE = app
 
 
-SOURCES += main.cpp\
-        mainwindow.cc
+SOURCES +=\
+        mainwindow.cc \
+    main.cc \
+    autotrace_controller.cc
 
-HEADERS  += mainwindow.hh
+HEADERS  += mainwindow.hh \
+    autotrace_controller.hh \
+    autotrace_setting.hh
