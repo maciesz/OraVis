@@ -18,5 +18,4 @@ SOURCES +=\
     autotrace_controller.cc
 
 HEADERS  += mainwindow.hh \
-    autotrace_controller.hh \
-    autotrace_setting.hh
+    autotrace_controller.hh

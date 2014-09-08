@@ -1,42 +1,56 @@
-#ifndef AUTOTRACE_CONTROLLER_HH
-#define AUTOTRACE_CONTROLLER_HH
+#ifndef AUTOTRACE_CONTROLLER_HH_
+#define AUTOTRACE_CONTROLLER_HH_
 
 #include <QObject>
 #include <QtSql>
-
-#include "autotrace_setting.hh"
 
 /**
  * \brief Class responsible for managing 'Autotrace' sql commands.
  */
 class AutotraceController : public QObject {
-  Q_OBJECT
+
+ Q_OBJECT
+
  public:
   explicit AutotraceController(QObject *parent = 0);
 
-  /**
-   * @brief Gather info about current Autotrace state.
-   */
-  AutotraceSetting getAutotraceInfo() const;
-
-  /**
-   * @brief Start autotracing using specified parameter as setting.
-   */
-  void StartAutotrace(const AutotraceSetting& setting_parameter);
-
-  /**
-   * @brief Stop autotracing immediately.
-   */
-  void StopAutotrace();
-
  signals:
+  /** \defgroup EnableAutotraceOptions
+   *  @{
+   *  Signals influencing Menu Autotrace Options access.
+   *  @param bool: true -> enable, false -> disable
+   */
+  void EnableAutotraceOnOptions(bool);
+
+  void EnableAutotraceOffOption(bool);
+  /** @}*/
 
  public slots:
+  /** \defgroup OnSetAutotrace
+   *  @{
+   *  Each single slot in defined group is called just after hit
+   *  on appropriate Menu action.
+   *  Responsibility: preforming desariable statement on database.
+   *  It is guaranteed that database connection is still valid
+   *  before handling the Autotrace Option.
+   */
+  void OnSetAutotraceOff();
+
+  void OnSetAutotraceOnExplain();
+
+  void OnSetAutotraceOnStatistics();
+
+  void OnSetAutotraceOn();
+
+  void OnSetAutotraceTraceonly();
+
+  void OnSetAutotraceOnTraceonlyExplain();
+
+  void OnSetAutotraceOnTraceonlyStatistics();
+  /** @}*/
 
  private:
-  AutotraceSetting current_setting_parameter_;
-
   QSqlQuery autotrace_query_;
 };
 
-#endif // AUTOTRACE_CONTROLLER_HH
+#endif  // AUTOTRACE_CONTROLLER_HH_
