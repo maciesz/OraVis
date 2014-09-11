@@ -13,9 +13,30 @@ TEMPLATE = app
 
 
 SOURCES +=\
-        mainwindow.cc \
     main.cc \
-    autotrace_controller.cc
+    autotrace_controller.cc \
+    layout_manager.cc \
+    board_preview_layout.cc \
+    editor_layout.cc \
+    visualization_panel_layout.cc \
+    main_window.cc \
+    input_layout.cc \
+    output_layout.cc \
+    status_bar_manager.cc \
+    menu_bar_manager.cc \
+    tool_bar_manager.cc
 
-HEADERS  += mainwindow.hh \
-    autotrace_controller.hh
+HEADERS  += \
+    autotrace_controller.hh \
+    base_format_set.hh \
+    extended_format_set.hh \
+    layout_manager.hh \
+    board_preview_layout.hh \
+    editor_layout.hh \
+    visualization_panel_layout.hh \
+    main_window.hh \
+    input_layout.hh \
+    output_layout.hh \
+    status_bar_manager.hh \
+    menu_bar_manager.hh \
+    tool_bar_manager.hh

@@ -1,0 +1,4 @@
+#ifndef BASEFORMATSET_HH
+#define BASEFORMATSET_HH
+
+#endif  // BASEFORMATSET_HH
