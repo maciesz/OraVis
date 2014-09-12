@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 
+#include "menu_bar_manager.hh"
+
 class MainWindow : public QMainWindow {
 
  Q_OBJECT
@@ -11,6 +13,9 @@ class MainWindow : public QMainWindow {
   MainWindow(QWidget *parent = 0);
 
   ~MainWindow();
+
+ private:
+  menu_bar::MenuBarManager* menu_bar_manager_;
 };
 
 #endif  // MAINWINDOW_HH_

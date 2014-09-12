@@ -1,7 +1,10 @@
 #ifndef MENU_BAR_MANAGER_HH
 #define MENU_BAR_MANAGER_HH
 
+#include <QMenu>
 #include <QMenuBar>
+
+#include "tool_menu.hh"
 
 namespace menu_bar {
 
@@ -16,6 +19,12 @@ class MenuBarManager : public QMenuBar {
 
  public slots:
 
+ private:
+  void DrawMenuBarManager();
+
+  void DrawToolMenu();
+
+  ToolMenu* tool_menu_;
 };
 
 }  // namespace menu_bar

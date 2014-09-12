@@ -24,7 +24,8 @@ SOURCES +=\
     output_layout.cc \
     status_bar_manager.cc \
     menu_bar_manager.cc \
-    tool_bar_manager.cc
+    tool_bar_manager.cc \
+    tool_menu.cc
 
 HEADERS  += \
     autotrace_controller.hh \
@@ -39,4 +40,6 @@ HEADERS  += \
     output_layout.hh \
     status_bar_manager.hh \
     menu_bar_manager.hh \
-    tool_bar_manager.hh
+    tool_bar_manager.hh \
+    tool_menu.hh \
+    string_view_constants.hh
