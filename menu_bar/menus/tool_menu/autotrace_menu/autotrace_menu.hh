@@ -33,6 +33,8 @@ class AutotraceMenu : public QMenu {
 
   void AddActions();
 
+  const AutotraceExecutor* executor_;
+
   QAction* off_;
   QAction* on_;
   QAction* on_explain_;
@@ -40,8 +42,6 @@ class AutotraceMenu : public QMenu {
   QAction* traceonly_;
   QAction* on_traceonly_explain_;
   QAction* on_traceonly_statistics_;
-
-  const AutotraceExecutor* executor_;
 };
 
 }  // namespace menu_bar

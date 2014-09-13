@@ -23,12 +23,11 @@ SOURCES +=\
     main_window/main_window.cc \
     menu_bar/menu_bar_manager/menu_bar_manager.cc \
     menu_bar/menus/tool_menu/dbms_xplan_menu/dbms_xplan_menu.cc \
-    menu_bar/menus/tool_menu/dbms_xplan_menu/abstract_display_menu/abstract_display_menu.cc \
+    menu_bar/menus/tool_menu/dbms_xplan_menu/abstract_display_action/abstract_display_action.cc \
     menu_bar/menus/tool_menu/tool_menu.cc \
     status_bar/status_bar_manager/status_bar_manager.cc \
     tool_bar/tool_bar_manager/tool_bar_manager.cc \
-    default_display_menu.cc \
-    menu_bar/menus/tool_menu/dbms_xplan_menu/default_display_menu/display_menu.cc \
+    menu_bar/menus/tool_menu/dbms_xplan_menu/default_display_action/display_action.cc \
     menu_bar/menus/tool_menu/autotrace_menu/autotrace_menu.cc \
     autotrace_executor.cc
 
@@ -44,12 +43,11 @@ HEADERS  += \
     main_window/main_window.hh \
     menu_bar/menu_bar_manager/menu_bar_manager.hh \
     menu_bar/menus/tool_menu/dbms_xplan_menu/dbms_xplan_menu.hh \
-    menu_bar/menus/tool_menu/dbms_xplan_menu/abstract_display_menu/abstract_display_menu.hh \
+    menu_bar/menus/tool_menu/dbms_xplan_menu/abstract_display_action/abstract_display_action.hh \
     menu_bar/menus/tool_menu/tool_menu.hh \
     status_bar/status_bar_manager/status_bar_manager.hh \
     tool_bar/tool_bar_manager/tool_bar_manager.hh \
-    default_display_menu.hh \
-    menu_bar/menus/tool_menu/dbms_xplan_menu/default_display_menu/display_menu.hh \
+    menu_bar/menus/tool_menu/dbms_xplan_menu/default_display_action/display_action.hh \
     menu_bar/menus/tool_menu/autotrace_menu/autotrace_menu.hh \
     autotrace_executor.hh
 

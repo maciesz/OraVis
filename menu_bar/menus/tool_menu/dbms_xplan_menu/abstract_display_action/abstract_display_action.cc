@@ -3,7 +3,7 @@
 namespace menu_bar {
 
 AbstractDisplayAction::AbstractDisplayAction(QWidget *parent) :
-    QMenu(parent) {
+    QAction(parent) {
 }
 
 }  // namespace menu_bar

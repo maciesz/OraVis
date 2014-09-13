@@ -33,33 +33,33 @@ void AutotraceMenu::SetActionTitles() {
       view_constants::SET_AUTOTRACE_ON_TRACEONLY_STATS);
 }
 
-void AutotraceMenu::SetConnects() {
-  connect(off_->trigger(),
-          SIGNAL(AutotraceOff()),
+void AutotraceMenu::SetConnects() const {
+  connect(off_,
+          SIGNAL(triggered()),
           executor_,
           SLOT(OnSetAutotraceOff()));
-  connect(on_->trigger(),
-          SIGNAL(AutotraceOn()),
+  connect(on_,
+          SIGNAL(triggered()),
           executor_,
           SLOT(OnSetAutotraceOn()));
-  connect(on_explain_->trigger(),
-          SIGNAL(AutotraceOnExplain()),
+  connect(on_explain_,
+          SIGNAL(triggered()),
           executor_,
           SLOT(OnSetAutotraceOnExplain()));
-  connect(on_statistics_->trigger(),
-          SIGNAL(AutotraceOnStatistics()),
+  connect(on_statistics_,
+          SIGNAL(triggered()),
           executor_,
           SLOT(OnSetAutotraceOnStatistics()));
-  connect(traceonly_->trigger(),
-          SIGNAL(AutotraceTraceonly()),
+  connect(traceonly_,
+          SIGNAL(triggered()),
           executor_,
           SLOT(OnSetAutotraceTraceonly()));
-  connect(on_traceonly_explain_->trigger(),
-          SIGNAL(AutotraceOnTraceonlyExplain()),
+  connect(on_traceonly_explain_,
+          SIGNAL(triggered()),
           executor_,
           SLOT(OnSetAutotraceOnTraceonlyExplain()));
-  connect(on_traceonly_statistics_->trigger(),
-          SIGNAL(AutotraceOnTraceonlyStatistics()),
+  connect(on_traceonly_statistics_,
+          SIGNAL(triggered()),
           executor_,
           SLOT(OnSetAutotraceOnTraceonlyStatistics()));
 }
@@ -73,7 +73,7 @@ void AutotraceMenu::AddActions() {
   addAction(on_explain_);
   addAction(on_statistics_);
 
-  add Separator();
+  addSeparator();
 
   addAction(traceonly_);
   addAction(on_traceonly_explain_);

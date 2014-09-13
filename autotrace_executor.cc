@@ -9,30 +9,30 @@ AutotraceExecutor::AutotraceExecutor(QObject *parent) :
 //=============================================================================
 // slots
 //=============================================================================
-void AutotraceController::OnSetAutotraceOff() {
-  autotrace_query_.exec(logic_constants::SET_AUTOTRACE_OFF_);
+void AutotraceExecutor::OnSetAutotraceOff() {
+  autotrace_query_->exec(logic_constants::SET_AUTOTRACE_OFF_);
 }
 
-void AutotraceController::OnSetAutotraceOnExplain() {
-  autotrace_query_.exec(logic_constants::SET_AUTOTRACE_ON_EXPLAIN);
+void AutotraceExecutor::OnSetAutotraceOnExplain() {
+  autotrace_query_->exec(logic_constants::SET_AUTOTRACE_ON_EXPLAIN);
 }
 
-void AutotraceController::OnSetAutotraceOnStatistics() {
-  autotrace_query_.exec(logic_constants::SET_AUTOTRACE_ON_STATISTICS);
+void AutotraceExecutor::OnSetAutotraceOnStatistics() {
+  autotrace_query_->exec(logic_constants::SET_AUTOTRACE_ON_STATISTICS);
 }
 
-void AutotraceController::OnSetAutotraceOn() {
-  autotrace_query_.exec(logic_constants::SET_AUTOTRACE_ON);
+void AutotraceExecutor::OnSetAutotraceOn() {
+  autotrace_query_->exec(logic_constants::SET_AUTOTRACE_ON);
 }
 
-void AutotraceController::OnSetAutotraceTraceonly() {
-  autotrace_query_.exec(logic_constants::SET_AUTOTRACE_TRACEONLY);
+void AutotraceExecutor::OnSetAutotraceTraceonly() {
+  autotrace_query_->exec(logic_constants::SET_AUTOTRACE_TRACEONLY);
 }
 
-void AutotraceController::OnSetAutotraceOnTraceonlyExplain() {
-  autotrace_query_.exec(logic_constants::SET_AUTOTRACE_ON_TRACEONLY_EXPLAIN);
+void AutotraceExecutor::OnSetAutotraceOnTraceonlyExplain() {
+  autotrace_query_->exec(logic_constants::SET_AUTOTRACE_ON_TRACEONLY_EXPLAIN);
 }
 
-void AutotraceController::OnSetAutotraceOnTraceonlyStatistics() {
-  autotrace_query_.exec(logic_constants::SET_AUTOTRACE_ON_TRACEONLY_STATS);
+void AutotraceExecutor::OnSetAutotraceOnTraceonlyStatistics() {
+  autotrace_query_->exec(logic_constants::SET_AUTOTRACE_ON_TRACEONLY_STATS);
 }
