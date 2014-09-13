@@ -3,7 +3,7 @@
 
 #include <QMainWindow>
 
-#include "menu_bar/menu_bar_manager.hh"
+#include "menu_bar/menu_bar_manager/menu_bar_manager.hh"
 
 class MainWindow : public QMainWindow {
 

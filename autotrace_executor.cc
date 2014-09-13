@@ -1,8 +1,8 @@
-#include "autotrace_controller.hh"
+#include "autotrace_executor.hh"
 
 #include "constants/string_logic_constants.hh"
 
-AutotraceController::AutotraceController(QObject *parent) :
+AutotraceExecutor::AutotraceExecutor(QObject *parent) :
     QObject(parent) {
 }
 

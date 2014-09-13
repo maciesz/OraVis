@@ -1,4 +1,4 @@
-#include "layouts/visualization_panel_layout.hh"
+#include "layouts/visualization_panel_layout/visualization_panel_layout.hh"
 
 namespace layout {
 

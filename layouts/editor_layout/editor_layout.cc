@@ -1,4 +1,4 @@
-#include "layouts/editor_layout.hh"
+#include "layouts/editor_layout/editor_layout.hh"
 
 namespace layout {
 

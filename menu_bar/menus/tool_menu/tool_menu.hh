@@ -1,5 +1,5 @@
-#ifndef MENU_BAR_MENUS_TOOL_MENU_TOOL_MENU_HH_
-#define MENU_BAR_MENUS_TOOL_MENU_TOOL_MENU_HH_
+#ifndef MENU_BAR_MENUS_TOOL_MENU_HH_
+#define MENU_BAR_MENUS_TOOL_MENU_HH_
 
 #include <QMenu>
 
@@ -35,4 +35,4 @@ class ToolMenu : public QMenu {
 
 }  // namespace menu_bar
 
-#endif  // MENU_BAR_MENUS_TOOL_MENU_TOOL_MENU_HH_
+#endif  // MENU_BAR_MENUS_TOOL_MENU_HH_

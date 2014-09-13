@@ -1,4 +1,4 @@
-#include "menu_bar/menus/dbms_xplan_menu/dbms_xplan_menu.hh"
+#include "menu_bar/menus/tool_menu/dbms_xplan_menu/dbms_xplan_menu.hh"
 
 namespace menu_bar {
 

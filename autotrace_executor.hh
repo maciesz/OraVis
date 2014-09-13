@@ -7,12 +7,12 @@
 /**
  * \brief Class responsible for managing 'Autotrace' sql commands.
  */
-class AutotraceController : public QObject {
+class AutotraceExecutor : public QObject {
 
  Q_OBJECT
 
  public:
-  explicit AutotraceController(QObject *parent = 0);
+  explicit AutotraceExecutor(QObject *parent = 0);
 
  signals:
   /** \defgroup EnableAutotraceOptions
@@ -50,7 +50,7 @@ class AutotraceController : public QObject {
   /** @}*/
 
  private:
-  QSqlQuery autotrace_query_;
+  QSqlQuery* autotrace_query_;
 };
 
 #endif  // AUTOTRACE_CONTROLLER_HH_

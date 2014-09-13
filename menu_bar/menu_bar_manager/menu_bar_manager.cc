@@ -1,4 +1,4 @@
-#include "menu_bar/menu_bar_manager.hh"
+#include "menu_bar/menu_bar_manager/menu_bar_manager.hh"
 
 namespace menu_bar {
 

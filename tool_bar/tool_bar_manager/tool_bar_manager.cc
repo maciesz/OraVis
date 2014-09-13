@@ -1,4 +1,4 @@
-#include "tool_bar/tool_bar_manager.hh"
+#include "tool_bar/tool_bar_manager/tool_bar_manager.hh"
 
 namespace tool_bar {
 
