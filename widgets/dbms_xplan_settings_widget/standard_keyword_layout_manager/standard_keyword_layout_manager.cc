@@ -3,7 +3,7 @@
 #include "constants/string_view_constants.hh"
 
 StandardKeywordLayoutManager::StandardKeywordLayoutManager(QWidget *parent) :
-    QVBoxLayout(parent),
+    AbstractKeywordLayoutManager(parent),
     rows_(new QCheckBox()),
     bytes_(new QCheckBox()),
     cost_(new QCheckBox()),

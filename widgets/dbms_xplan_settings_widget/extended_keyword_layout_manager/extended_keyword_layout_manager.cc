@@ -3,7 +3,7 @@
 #include  "constants/string_view_constants.hh"
 
 ExtendedKeywordLayoutManager::ExtendedKeywordLayoutManager(QWidget *parent) :
-    QVBoxLayout(parent),
+    AbstractKeywordLayoutManager(parent),
     parallel_(new QCheckBox()),
     remote_(new QCheckBox()),
     iostats_(new QCheckBox()),

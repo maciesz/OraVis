@@ -5,14 +5,16 @@
 
 #include <QCheckBox>
 #include <QMap>
+#include <QObject>
 #include <QString>
 
 class AbstractDisplayCheckboxManager : public QWidget {
 
  Q_OBJECT
+ Q_ENUMS(CheckboxState)
 
  public:
-  enum class CheckboxState {
+  enum /*class*/ CheckboxState {
     CHECKED_ENABLED,
     CHECKED_DISABLED,
     UNCHECKED_ENABLED,
@@ -38,19 +40,19 @@ class AbstractDisplayCheckboxManager : public QWidget {
       const CheckboxState state = it.value();
       if (it != checkbox_map_->constEnd()) {
         switch (state) {
-         case AbstractDisplayCheckboxManager::CheckboxState::CHECKED_ENABLED:
+         case CHECKED_ENABLED:
            checkbox->setChecked(true);
            checkbox->setEnabled(true);
            break;
-          case CheckboxState::CHECKED_DISABLED:
+          case CHECKED_DISABLED:
            checkbox->setChecked(true);
            checkbox->setDisabled(true);
            break;
-          case CheckboxState::UNCHECKED_ENABLED:
+          case UNCHECKED_ENABLED:
            checkbox->setChecked(false);
            checkbox->setEnabled(true);
            break;
-          case CheckboxState::UNCHECKED_DISABLED:
+          case UNCHECKED_DISABLED:
            checkbox->setChecked(false);
            checkbox->setDisabled(true);
            break;

@@ -48,28 +48,28 @@ void AbstractDisplayCheckboxManager::SetCheckedEnabled(
     CheckboxStateMap* map, const QString key_name) {
   CheckboxStateMapConstIterator map_it = map->constFind(key_name);
   if (map_it != map->constEnd())
-    map->insert(map_it.key(), CheckboxState::CHECKED_ENABLED);
+    map->insert(map_it.key(), CHECKED_ENABLED);
 }
 
 void AbstractDisplayCheckboxManager::SetCheckedDisabled(
     CheckboxStateMap* map, const QString key_name) {
   CheckboxStateMapConstIterator map_it = map->constFind(key_name);
   if (map_it != map->constEnd())
-    map->insert(map_it.key(), CheckboxState::CHECKED_DISABLED);
+    map->insert(map_it.key(), CHECKED_DISABLED);
 }
 
 void AbstractDisplayCheckboxManager::SetUncheckedEnabled(
     CheckboxStateMap* map, const QString key_name) {
   CheckboxStateMapConstIterator map_it = map->constFind(key_name);
   if (map_it != map->constEnd())
-    map->insert(map_it.key(), CheckboxState::UNCHECKED_ENABLED);
+    map->insert(map_it.key(), UNCHECKED_ENABLED);
 }
 
 void AbstractDisplayCheckboxManager::SetUncheckedDisabled(
     CheckboxStateMap* map, const QString key_name) {
   CheckboxStateMapIterator map_it = map->find(key_name);
   if (map_it != map->end())
-    map->insert(map_it.key(),CheckboxState::UNCHECKED_DISABLED);
+    map->insert(map_it.key(), UNCHECKED_DISABLED);
 }
 
 void AbstractDisplayCheckboxManager::InitCheckboxMaps() {
@@ -89,8 +89,8 @@ void AbstractDisplayCheckboxManager::InitTypicalCheckboxStateMap() {
     const CheckboxState state = it.value();
     typical_it = typical_checkbox_state_map_->insert(keyword, state);
 
-    if (state == CheckboxState::UNCHECKED_ENABLED)
-      typical_checkbox_state_map_->insert(keyword, CheckboxState::CHECKED_DISABLED);
+    if (state == UNCHECKED_ENABLED)
+      typical_checkbox_state_map_->insert(keyword, CHECKED_DISABLED);
   }
 
   SetUncheckedEnabled(typical_checkbox_state_map_,

@@ -24,6 +24,8 @@ class StandardKeywordLayoutManager : public AbstractKeywordLayoutManager {
   QCheckBox* alias_;
   QCheckBox* note_;
 
+  virtual ~StandardKeywordLayoutManager();
+
  signals:
 
  public slots:

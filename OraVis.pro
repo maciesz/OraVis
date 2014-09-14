@@ -34,7 +34,6 @@ SOURCES +=\
     menu_bar/menus/tool_menu/dbms_xplan_menu/display_sql_set_action/display_sql_set_action.cc \
     menu_bar/menus/tool_menu/dbms_xplan_menu/display_cursor_action/display_cursor_action.cc \
     widgets/dbms_xplan_settings_widget/dbms_xplan_settings_widget.cc \
-    widgets/dbms_xplan_settings_widget/format_keyword_layout_manager/format_keyword_layout_manager.cc \
     widgets/dbms_xplan_settings_widget/abstract_display_checkbox_manager/abstract_display_checkbox_manager.cc \
     widgets/dbms_xplan_settings_widget/default_display_checkbox_manager/default_display_checkbox_manager.cc \
     widgets/dbms_xplan_settings_widget/display_awr_checkbox_manager/display_awr_checkbox_manager.cc \
@@ -67,7 +66,6 @@ HEADERS  += \
     menu_bar/menus/tool_menu/dbms_xplan_menu/display_sql_set_action/display_sql_set_action.hh \
     menu_bar/menus/tool_menu/dbms_xplan_menu/display_cursor_action/display_cursor_action.hh \
     widgets/dbms_xplan_settings_widget/dbms_xplan_settings_widget.hh \
-    widgets/dbms_xplan_settings_widget/format_keyword_layout_manager/format_keyword_layout_manager.hh \
     widgets/dbms_xplan_settings_widget/abstract_display_checkbox_manager/abstract_display_checkbox_manager.hh \
     widgets/dbms_xplan_settings_widget/default_display_checkbox_manager/default_display_checkbox_manager.hh \
     widgets/dbms_xplan_settings_widget/display_awr_checkbox_manager/display_awr_checkbox_manager.hh \

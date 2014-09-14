@@ -22,6 +22,8 @@ class ExtendedKeywordLayoutManager : public AbstractKeywordLayoutManager {
   QCheckBox* allstats_;
   QCheckBox* last_;
 
+  virtual ~ExtendedKeywordLayoutManager();
+
  signals:
 
  public slots:

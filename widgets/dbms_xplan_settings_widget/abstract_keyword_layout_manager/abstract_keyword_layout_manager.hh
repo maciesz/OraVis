@@ -13,6 +13,8 @@ class AbstractKeywordLayoutManager : public QVBoxLayout {
   virtual void AddCheckBoxWidgets() = 0;
   virtual void SetCheckboxText() = 0;
 
+  virtual ~AbstractKeywordLayoutManager() {}
+
  signals:
 
  public slots:
