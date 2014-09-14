@@ -5,7 +5,7 @@ namespace menu_bar {
 MenuBarManager::MenuBarManager(QWidget *parent)
     : QMenuBar(parent),
       tool_menu_(new ToolMenu(this)) {
-  this->addMenu(tool_menu_);
+  addMenu(tool_menu_);
 }
 
 void MenuBarManager::DrawToolMenu() {

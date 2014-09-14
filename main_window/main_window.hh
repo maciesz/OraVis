@@ -4,6 +4,7 @@
 #include <QMainWindow>
 
 #include "menu_bar/menu_bar_manager/menu_bar_manager.hh"
+#include "widgets/dbms_xplan_settings_widget.hh"
 
 class MainWindow : public QMainWindow {
 
@@ -16,6 +17,8 @@ class MainWindow : public QMainWindow {
 
  private:
   menu_bar::MenuBarManager* menu_bar_manager_;
+
+  DbmsXplanSettingsWidget* widget_;
 };
 
 #endif  // MAINWINDOW_HH_

@@ -3,6 +3,9 @@
 
 #include <QMenu>
 
+#include "autotrace_menu/autotrace_menu.hh"
+#include "dbms_xplan_menu/dbms_xplan_menu.hh"
+
 namespace menu_bar {
 
 class ToolMenu : public QMenu {
@@ -17,19 +20,10 @@ class ToolMenu : public QMenu {
  public slots:
 
  private:
-  void InitializeToolMenu();
 
-  void InitAutotraceMenu();
-
-  void InitDbmsStatsMenu();
-
-  void InitDbmsXplanMenu();
-
-  //void InitTkprofMenu();
-
-  QMenu* autotrace_menu_;
-  QMenu* dbms_stats_menu_;
-  QMenu* dbms_xplan_menu_;
+  AutotraceMenu* autotrace_menu_;
+  // DbmsStatsMenu* dbms_stats_menu_;
+  DbmsXplanMenu* dbms_xplan_menu_;
   // TODO: QMenu* TkprofMenu;
 };
 

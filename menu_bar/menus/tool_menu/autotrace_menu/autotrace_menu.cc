@@ -14,23 +14,23 @@ AutotraceMenu::AutotraceMenu(AutotraceExecutor* executor, QWidget* parent)
       traceonly_(new QAction(this)),
       on_traceonly_explain_(new QAction(this)),
       on_traceonly_statistics_(new QAction(this)) {
+  setTitle(view_constants::AUTOTRACE_MENU_TITLE);
   SetActionTitles();
   SetConnects();
   AddActions();
-
-  setTitle("Autotrace..");
 }
 
 void AutotraceMenu::SetActionTitles() {
-  off_->setText(view_constants::SET_AUTOTRACE_OFF_);
-  on_->setText(view_constants::SET_AUTOTRACE_ON);
-  on_explain_->setText(view_constants::SET_AUTOTRACE_ON_EXPLAIN);
-  on_statistics_->setText(view_constants::SET_AUTOTRACE_ON_STATISTICS);
-  traceonly_->setText(view_constants::SET_AUTOTRACE_TRACEONLY);
+  off_->setText(view_constants::SET_AUTOTRACE_OFF_ACTION_TITLE);
+  on_->setText(view_constants::SET_AUTOTRACE_ON_ACTION_TITLE);
+  on_explain_->setText(view_constants::SET_AUTOTRACE_ON_EXPLAIN_ACTION_TITLE);
+  on_statistics_->setText(
+      view_constants::SET_AUTOTRACE_ON_STATISTICS_ACTION_TITLE);
+  traceonly_->setText(view_constants::SET_AUTOTRACE_TRACEONLY_ACTION_TITLE);
   on_traceonly_explain_->setText(
-      view_constants::SET_AUTOTRACE_ON_TRACEONLY_EXPLAIN);
+      view_constants::SET_AUTOTRACE_ON_TRACEONLY_EXPLAIN_ACTION_TITLE);
   on_traceonly_statistics_->setText(
-      view_constants::SET_AUTOTRACE_ON_TRACEONLY_STATS);
+      view_constants::SET_AUTOTRACE_ON_TRACEONLY_STATS_ACTION_TITLE);
 }
 
 void AutotraceMenu::SetConnects() const {
@@ -65,10 +65,6 @@ void AutotraceMenu::SetConnects() const {
 }
 
 void AutotraceMenu::AddActions() {
-  addAction(off_);
-
-  addSeparator();
-
   addAction(on_);
   addAction(on_explain_);
   addAction(on_statistics_);
@@ -78,6 +74,10 @@ void AutotraceMenu::AddActions() {
   addAction(traceonly_);
   addAction(on_traceonly_explain_);
   addAction(on_traceonly_statistics_);
+
+  addSeparator();
+
+  addAction(off_);
 }
 
 }  // namespace menu_bar
