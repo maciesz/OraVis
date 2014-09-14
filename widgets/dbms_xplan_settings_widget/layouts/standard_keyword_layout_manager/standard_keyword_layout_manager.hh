@@ -2,8 +2,9 @@
 #define STANDARD_KEYWORD_LAYOUT_MANAGER_HH
 
 #include <QCheckBox>
+#include <QList>
 
-#include "widgets/dbms_xplan_settings_widget/abstract_keyword_layout_manager/abstract_keyword_layout_manager.hh"
+#include "widgets/dbms_xplan_settings_widget/layouts/abstract_keyword_layout_manager/abstract_keyword_layout_manager.hh"
 
 class StandardKeywordLayoutManager : public AbstractKeywordLayoutManager {
 
@@ -15,6 +16,17 @@ class StandardKeywordLayoutManager : public AbstractKeywordLayoutManager {
   void AddCheckBoxWidgets();
   void SetCheckboxText();
 
+  virtual ~StandardKeywordLayoutManager();
+
+  QList<QCheckBox*>* GetCheckboxList() const;
+
+ signals:
+
+ public slots:
+
+ private:
+  void AddCheckboxToList();
+
   QCheckBox* rows_;
   QCheckBox* bytes_;
   QCheckBox* cost_;
@@ -24,11 +36,7 @@ class StandardKeywordLayoutManager : public AbstractKeywordLayoutManager {
   QCheckBox* alias_;
   QCheckBox* note_;
 
-  virtual ~StandardKeywordLayoutManager();
-
- signals:
-
- public slots:
+  QList<QCheckBox*>* checkbox_list_;
 };
 
 #endif // STANDARD_KEYWORD_LAYOUT_MANAGER_HH

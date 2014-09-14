@@ -34,8 +34,10 @@ class AbstractDisplayCheckboxManager : public QWidget {
 
   class CheckboxSetter : public QWidget {
    public:
-    void SetCheckbox(const QString name, QCheckBox* checkbox) const {
-      CheckboxStateMapConstIterator it = checkbox_map_->constFind(name);
+    void SetCheckbox(QCheckBox* checkbox) const {
+      const QString checkbox_text = checkbox->text();
+      CheckboxStateMapConstIterator it =
+          checkbox_map_->constFind(checkbox_text);
 
       const CheckboxState state = it.value();
       if (it != checkbox_map_->constEnd()) {
@@ -63,7 +65,10 @@ class AbstractDisplayCheckboxManager : public QWidget {
    private:
     friend class AbstractDisplayCheckboxManager;
 
-    CheckboxSetter(QWidget* parent = 0) : QWidget(parent) {}
+    CheckboxSetter(QWidget* parent = 0)
+        : QWidget(parent),
+          checkbox_map_(new CheckboxStateMap()) {
+    }
 
     void SetCheckboxStateMap(CheckboxStateMap* map) {
       checkbox_map_ = map;
@@ -73,14 +78,15 @@ class AbstractDisplayCheckboxManager : public QWidget {
   };
 
  signals:
-  virtual void PassValidCheckboxConfiguration(
-      CheckboxSetter* checkbox_configuration);
+  void SendValidCheckboxConfiguration(
+      AbstractDisplayCheckboxManager::CheckboxSetter* checkbox_configuration);
 
  public slots:
   virtual void OnPassValidCheckboxConfiguration(const QString option);
 
  protected:
   virtual void InitBaseCheckboxStateMap() = 0;
+  virtual void InitBaseDependantCheckboxMaps();
 
   CheckboxSetter* checkbox_setter_;
 
@@ -99,7 +105,6 @@ class AbstractDisplayCheckboxManager : public QWidget {
   void SetUncheckedEnabled(CheckboxStateMap* map, const QString key_name);
   void SetUncheckedDisabled(CheckboxStateMap* map, const QString key_name);
 
-  void InitCheckboxMaps();
   void InitTypicalCheckboxStateMap();
   void InitSerialCheckboxStateMap();
   void InitAllCheckboxStateMap();

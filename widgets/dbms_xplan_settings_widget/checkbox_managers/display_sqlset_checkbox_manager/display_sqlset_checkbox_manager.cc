@@ -4,18 +4,20 @@
 
 DisplaySQLSetCheckboxManager::DisplaySQLSetCheckboxManager(QWidget *parent) :
     AbstractDisplayCheckboxManager(parent) {
+  InitBaseCheckboxStateMap();
+  InitBaseDependantCheckboxMaps();
 }
 
 void DisplaySQLSetCheckboxManager::InitBaseCheckboxStateMap() {
   basic_checkbox_state_map_->insert(
     view_constants::DBMS_XPLAN_FORMAT_KEYWORD_ROWS,
-    CHECKED_ENABLED);
+    CHECKED_DISABLED);
   basic_checkbox_state_map_->insert(
     view_constants::DBMS_XPLAN_FORMAT_KEYWORD_BYTES,
-    CHECKED_ENABLED);
+    CHECKED_DISABLED);
   basic_checkbox_state_map_->insert(
     view_constants::DBMS_XPLAN_FORMAT_KEYWORD_COST,
-    CHECKED_ENABLED);
+    CHECKED_DISABLED);
   basic_checkbox_state_map_->insert(
     view_constants::DBMS_XPLAN_FORMAT_KEYWORD_PARTITION,
     UNCHECKED_ENABLED);

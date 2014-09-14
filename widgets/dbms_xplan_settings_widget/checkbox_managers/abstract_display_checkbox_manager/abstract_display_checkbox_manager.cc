@@ -34,7 +34,7 @@ void AbstractDisplayCheckboxManager::OnPassValidCheckboxConfiguration(
   else if (option == view_constants::DBMS_XPLAN_FORMAT_CUSTOM)
     checkbox_setter_->SetCheckboxStateMap(last_customized_checkbox_state_map_);
 
-  emit PassValidCheckboxConfiguration(checkbox_setter_);
+  emit SendValidCheckboxConfiguration(checkbox_setter_);
 }
 
 void AbstractDisplayCheckboxManager::CopyCollection(
@@ -72,8 +72,7 @@ void AbstractDisplayCheckboxManager::SetUncheckedDisabled(
     map->insert(map_it.key(), UNCHECKED_DISABLED);
 }
 
-void AbstractDisplayCheckboxManager::InitCheckboxMaps() {
-  InitBaseCheckboxStateMap();
+void AbstractDisplayCheckboxManager::InitBaseDependantCheckboxMaps() {
   InitTypicalCheckboxStateMap();
   InitSerialCheckboxStateMap();
   InitAllCheckboxStateMap();

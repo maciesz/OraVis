@@ -4,7 +4,7 @@
 #include <QMainWindow>
 
 #include "menu_bar/menu_bar_manager/menu_bar_manager.hh"
-#include "widgets/dbms_xplan_settings_widget.hh"
+#include "widgets/dbms_xplan_settings_widget/dbms_xplan_settings_widget.hh"
 
 class MainWindow : public QMainWindow {
 

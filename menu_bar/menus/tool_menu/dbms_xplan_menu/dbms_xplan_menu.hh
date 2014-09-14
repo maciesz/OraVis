@@ -3,10 +3,14 @@
 
 #include <QMenu>
 
+/*
 #include "default_display_action/display_action.hh"
 #include "display_awr_action/display_awr_action.hh"
 #include "display_cursor_action/display_cursor_action.hh"
 #include "display_sql_set_action/display_sql_set_action.hh"
+*/
+
+#include "widgets/dbms_xplan_settings_widget/dbms_xplan_settings_widget.hh"
 
 namespace menu_bar {
 
@@ -24,10 +28,11 @@ class DbmsXplanMenu : public QMenu {
  private:
   void AddActions();
 
-  DisplayAction* display_action_;
-  DisplayAWRAction* display_awr_action_;
-  DisplayCursorAction* display_cursor_action_;
-  DisplaySQLSetAction* display_sql_set_action_;
+  void SetConnects();
+
+  QAction* display_filter_;
+  QAction* view_last_plan_;
+  DbmsXplanSettingsWidget* widget_;
 };
 
 }  // namespace menu_bar

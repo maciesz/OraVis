@@ -1,7 +1,7 @@
 #ifndef EXTENDED_KEYWORD_LAYOUT_MANAGER_HH
 #define EXTENDED_KEYWORD_LAYOUT_MANAGER_HH
 
-#include "widgets/dbms_xplan_settings_widget/abstract_keyword_layout_manager/abstract_keyword_layout_manager.hh"
+#include "widgets/dbms_xplan_settings_widget/layouts/abstract_keyword_layout_manager/abstract_keyword_layout_manager.hh"
 
 #include <QCheckBox>
 
@@ -15,6 +15,17 @@ class ExtendedKeywordLayoutManager : public AbstractKeywordLayoutManager {
   void AddCheckBoxWidgets();
   void SetCheckboxText();
 
+  virtual ~ExtendedKeywordLayoutManager();
+
+  QList<QCheckBox*>* GetCheckboxList() const;
+
+ signals:
+
+ public slots:
+
+ private:
+  void AddCheckboxToList();
+
   QCheckBox* parallel_;
   QCheckBox* remote_;
   QCheckBox* iostats_;
@@ -22,12 +33,7 @@ class ExtendedKeywordLayoutManager : public AbstractKeywordLayoutManager {
   QCheckBox* allstats_;
   QCheckBox* last_;
 
-  virtual ~ExtendedKeywordLayoutManager();
-
- signals:
-
- public slots:
-
+  QList<QCheckBox*>* checkbox_list_;
 };
 
 #endif // EXTENDED_KEYWORD_LAYOUT_MANAGER_HH

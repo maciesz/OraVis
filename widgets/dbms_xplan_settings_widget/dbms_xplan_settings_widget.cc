@@ -17,7 +17,12 @@ DbmsXplanSettingsWidget::DbmsXplanSettingsWidget(QWidget *parent)
       format_layout_(new QVBoxLayout(/*this*/)),
       format_keyword_layout_(new QHBoxLayout()),
       standard_keywords_layout_(new StandardKeywordLayoutManager(/*this*/)),
-      extended_keywords_layout_(new ExtendedKeywordLayoutManager()) {
+      extended_keywords_layout_(new ExtendedKeywordLayoutManager()),
+      default_display_checkbox_manager_(new DefaultDisplayCheckboxManager(this)),
+      display_awr_checkbox_manager_(new DisplayAWRCheckboxManager(this)),
+      display_cursor_checkbox_manager_(new DisplayCursorCheckboxManager(this)),
+      display_sqlset_checkbox_manager_(new DisplaySQLSetCheckboxManager(this)) {
+  SetConnects();
   SetFormatBox();
   SetFormatKeywordBox();
   this->setWindowTitle("DSAAD");
@@ -25,7 +30,109 @@ DbmsXplanSettingsWidget::DbmsXplanSettingsWidget(QWidget *parent)
   widget_layout_->addWidget(format_keyword_box_, 0, 2, 2, 3);
 
   show();
-  //setLayout(widget_layout_);
+}
+
+void DbmsXplanSettingsWidget::OnCurrentFormatTextChanged(
+    const QString format_text) {
+  const QString option_text = display_options_->currentText();
+  EmitSignalForValidCheckboxConfiguration(option_text, format_text);
+}
+
+void DbmsXplanSettingsWidget::OnCurrentOptionTextChanged(
+    const QString option_text) {
+  const QString format_text = standard_formats_->currentText();
+  EmitSignalForValidCheckboxConfiguration(option_text, format_text);
+}
+
+void DbmsXplanSettingsWidget::OnApplyFilter() {
+  // TODO, zapisać gdzieś czy coś.
+  // Ale jakoś ładnie, tak, żeby dało się to potem wczytać, no wiesz..
+}
+
+void DbmsXplanSettingsWidget::OnCloseWidget() {
+
+}
+
+void DbmsXplanSettingsWidget::SetConnects() {
+  connect(display_options_,
+          SIGNAL(currentTextChanged(QString)),
+          this,
+          SLOT(OnCurrentOptionTextChanged(QString)));
+
+  connect(standard_formats_,
+          SIGNAL(currentTextChanged(QString)),
+          this,
+          SLOT(OnCurrentFormatTextChanged(QString)));
+
+  // Request valid checkbox config
+  connect(this,
+          SIGNAL(DefaultDisplayManagerPassValidCheckboxConfiguration(QString)),
+          default_display_checkbox_manager_,
+          SLOT(OnPassValidCheckboxConfiguration(QString)));
+
+  connect(this,
+          SIGNAL(DisplayAWRManagerPassValidCheckboxConfiguration(QString)),
+          display_awr_checkbox_manager_,
+          SLOT(OnPassValidCheckboxConfiguration(QString)));
+
+  connect(this,
+          SIGNAL(DisplayCursorManagerPassValidCheckboxConfiguration(QString)),
+          display_cursor_checkbox_manager_,
+          SLOT(OnPassValidCheckboxConfiguration(QString)));
+
+  connect(this,
+          SIGNAL(DisplaySqlSetManagerPassValidCheckboxConfiguration(QString)),
+          display_sqlset_checkbox_manager_,
+          SLOT(OnPassValidCheckboxConfiguration(QString)));
+
+  // Apply valid checkbox display
+  connect(default_display_checkbox_manager_,
+          SIGNAL(SendValidCheckboxConfiguration(
+              AbstractDisplayCheckboxManager::CheckboxSetter*)),
+          this,
+          SLOT(OnUpdateCheckboxMenu(
+              AbstractDisplayCheckboxManager::CheckboxSetter*)));
+
+  connect(display_awr_checkbox_manager_,
+          SIGNAL(SendValidCheckboxConfiguration(
+              AbstractDisplayCheckboxManager::CheckboxSetter*)),
+          this,
+          SLOT(OnUpdateCheckboxMenu(
+              AbstractDisplayCheckboxManager::CheckboxSetter*)));
+
+  connect(display_cursor_checkbox_manager_,
+          SIGNAL(SendValidCheckboxConfiguration(
+              AbstractDisplayCheckboxManager::CheckboxSetter*)),
+          this,
+          SLOT(OnUpdateCheckboxMenu(
+              AbstractDisplayCheckboxManager::CheckboxSetter*)));
+
+  connect(display_sqlset_checkbox_manager_,
+          SIGNAL(SendValidCheckboxConfiguration(
+              AbstractDisplayCheckboxManager::CheckboxSetter*)),
+          this,
+          SLOT(OnUpdateCheckboxMenu(
+              AbstractDisplayCheckboxManager::CheckboxSetter*)));
+
+}
+
+void DbmsXplanSettingsWidget::UpdateCheckboxMenu(
+    const AbstractDisplayCheckboxManager::CheckboxSetter* checkbox_setter,
+    QList<QCheckBox*>* checkbox_list) {
+  for (QList<QCheckBox*>::iterator it = checkbox_list->begin();
+      it != checkbox_list->end(); ++it)
+    checkbox_setter->SetCheckbox(*it);
+}
+
+void DbmsXplanSettingsWidget::OnUpdateCheckboxMenu(
+    AbstractDisplayCheckboxManager::CheckboxSetter* checkbox_setter) {
+  QList<QCheckBox*>* checkbox_list;
+
+  checkbox_list = standard_keywords_layout_->GetCheckboxList();
+  UpdateCheckboxMenu(checkbox_setter, checkbox_list);
+
+  checkbox_list = extended_keywords_layout_->GetCheckboxList();
+  UpdateCheckboxMenu(checkbox_setter, checkbox_list);
 }
 
 void DbmsXplanSettingsWidget::SetFormatBox() {
@@ -39,6 +146,7 @@ void DbmsXplanSettingsWidget::SetFormatBox() {
   standard_formats_->addItem(view_constants::DBMS_XPLAN_FORMAT_TYPICAL);
   standard_formats_->addItem(view_constants::DBMS_XPLAN_FORMAT_SERIAL);
   standard_formats_->addItem(view_constants::DBMS_XPLAN_FORMAT_ALL);
+  standard_formats_->addItem(view_constants::DBMS_XPLAN_FORMAT_CUSTOM);
 
   format_label_->setText("Option");
   format_label_->setBuddy(standard_formats_);
@@ -74,4 +182,16 @@ void DbmsXplanSettingsWidget::SetFormatKeywordBox() {
   format_keyword_layout_->addWidget(standard_keyword_box_);
   format_keyword_layout_->addWidget(extended_keyword_box_);
   format_keyword_box_->setLayout(format_keyword_layout_);
+}
+
+void DbmsXplanSettingsWidget::EmitSignalForValidCheckboxConfiguration(
+    const QString option_text, const QString format_text) {
+  if (option_text == view_constants::DBMS_XPLAN_OPTION_DEFAULT_DISPLAY)
+    emit DefaultDisplayManagerPassValidCheckboxConfiguration(format_text);
+  else if (option_text == view_constants::DBMS_XPLAN_OPTION_DISPLAY_AWR)
+    emit DisplayAWRManagerPassValidCheckboxConfiguration(format_text);
+  else if (option_text == view_constants::DBMS_XPLAN_OPTION_DISPLAY_CURSOR)
+    emit DisplayCursorManagerPassValidCheckboxConfiguration(format_text);
+  else if (option_text == view_constants::DBMS_XPLAN_OPTION_DISPLAY_SQL_SET)
+    emit DisplaySqlSetManagerPassValidCheckboxConfiguration(format_text);
 }

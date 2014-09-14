@@ -1,30 +1,23 @@
-#include "default_display_checkbox_manager.hh"
+#include "display_awr_checkbox_manager.hh"
 
 #include "constants/string_view_constants.hh"
 
-DefaultDisplayCheckboxManager::DefaultDisplayCheckboxManager(QWidget *parent) :
+DisplayAWRCheckboxManager::DisplayAWRCheckboxManager(QWidget *parent) :
     AbstractDisplayCheckboxManager(parent) {
-  //InitCheckboxMaps();
+  InitBaseCheckboxStateMap();
+  InitBaseDependantCheckboxMaps();
 }
 
-/*void DefaultDisplayCheckboxManager::InitCheckboxMaps() {
-  InitBaseCheckboxStateMap();
-  InitTypicalCheckboxStateMap();
-  InitSerialCheckboxStateMap();
-  InitAllCheckboxStateMap();
-  InitLastCustomizedCheckBoxStateMap();
-}*/
-
-void DefaultDisplayCheckboxManager::InitBaseCheckboxStateMap() {
+void DisplayAWRCheckboxManager::InitBaseCheckboxStateMap() {
   basic_checkbox_state_map_->insert(
     view_constants::DBMS_XPLAN_FORMAT_KEYWORD_ROWS,
-    CHECKED_ENABLED);
+    CHECKED_DISABLED);
   basic_checkbox_state_map_->insert(
     view_constants::DBMS_XPLAN_FORMAT_KEYWORD_BYTES,
-    CHECKED_ENABLED);
+    CHECKED_DISABLED);
   basic_checkbox_state_map_->insert(
     view_constants::DBMS_XPLAN_FORMAT_KEYWORD_COST,
-    CHECKED_ENABLED);
+    CHECKED_DISABLED);
   basic_checkbox_state_map_->insert(
     view_constants::DBMS_XPLAN_FORMAT_KEYWORD_PARTITION,
     UNCHECKED_ENABLED);
